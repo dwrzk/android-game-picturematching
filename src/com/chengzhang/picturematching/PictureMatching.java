@@ -197,7 +197,7 @@ public class PictureMatching extends Activity {
 		pieces[currentPiece.getIndexX()][currentPiece.getIndexY()] = null;
 		_selected = null;
 		_vibrator.vibrate(100);
-		if (_gameService.hasPieces()) {
+		if (!_gameService.hasPieces()) {
 			_successDialog.show();
 			stopTimer();
 			_isPlaying = false;
