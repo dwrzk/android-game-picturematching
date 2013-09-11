@@ -104,16 +104,15 @@ public class Piece {
 	public void setIndexY(int indexY) {
 		_indexY = indexY;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Piece) {
-			if (_image != null && ((Piece) obj).getImage() != null) {
-				PieceImage image = ((Piece) obj).getPieceImage();
-				return _image.equals(image);
-			}
+	
+	public boolean isSameImage(Piece other)
+	{
+		if (_image == null)
+		{
+			if (other._image != null)
+				return false;
 		}
-		return false;
+		return _image.getImageID() == other._image.getImageID();
 	}
 
 	public Point getCenter() {

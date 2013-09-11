@@ -62,12 +62,4 @@ public class PieceImage {
 		_imageID = imageID;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof PieceImage) {
-			int imageID = ((PieceImage) obj).getImageID();
-			return _imageID == imageID;
-		}
-		return false;
-	}
 }

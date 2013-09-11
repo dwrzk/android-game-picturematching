@@ -3,7 +3,6 @@ package com.chengzhang.picturematching;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.chengzhang.picturematching.R;
 import com.chengzhang.picturematching.bom.LinkInfo;
 import com.chengzhang.picturematching.bom.Piece;
 import com.chengzhang.picturematching.common.GameConf;
@@ -32,13 +31,13 @@ public class PictureMatching extends Activity {
 	private GameService _gameService;
 	private GameView _gameView;
 	private Button _startButton;
-	TextView _timeTextView;
-	AlertDialog.Builder _lostDialog;
+	private TextView _timeTextView;
+	private AlertDialog.Builder _lostDialog;
 	private AlertDialog.Builder _successDialog;
 
 	private Timer _timer = new Timer();
-	int _gameTime;
-	boolean _isPlaying;
+	private int _gameTime;
+	private boolean _isPlaying;
 	private Vibrator _vibrator;
 
 	private Piece _selected = null;
@@ -46,7 +45,7 @@ public class PictureMatching extends Activity {
 		public void handleMessage(Message mag) {
 			switch (mag.what) {
 			case 0x123:
-				_timeTextView.setText("Time Left : " + _gameTime); //$NON-NLS-1$
+				_timeTextView.setText(" Time Left: " + _gameTime); //$NON-NLS-1$
 				_gameTime--;
 				if (_gameTime < 0) {
 					stopTimer();
@@ -91,6 +90,7 @@ public class PictureMatching extends Activity {
 
 		_gameView.setOnTouchListener(new View.OnTouchListener() {
 
+			@SuppressWarnings("synthetic-access")
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -139,7 +139,7 @@ public class PictureMatching extends Activity {
 		super.onResume();
 	}
 
-	void gameViewTouchDown(MotionEvent event) {
+	private void gameViewTouchDown(MotionEvent event) {
 		Piece[][] pieces = _gameService.getPieces();
 		float touchX = event.getX();
 		float touchY = event.getY();
@@ -165,7 +165,7 @@ public class PictureMatching extends Activity {
 	}
 
 	@SuppressWarnings("unused")
-	void gameViewTouchUp(MotionEvent event) {
+	private void gameViewTouchUp(MotionEvent event) {
 		_gameView.postInvalidate();
 	}
 
@@ -210,7 +210,7 @@ public class PictureMatching extends Activity {
 				.setMessage(message).setIcon(imageResource);
 	}
 
-	void stopTimer() {
+	private void stopTimer() {
 		_timer.cancel();
 		_timer = null;
 	}

@@ -127,6 +127,10 @@ public class GameEngine implements GameService {
 		if (p1.equals(p2)) {
 			return null;
 		}
+		
+		if (!p1.isSameImage(p2))
+			return null;
+		
 		if (p2.getIndexX() < p1.getIndexX()) {
 			return link(p2, p1);
 		}

@@ -9,34 +9,29 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="380dp"
-        android:background="#1e72bb"
-        android:gravity="center"
-        android:orientation="horizontal" >
+    <LinearLayout
+       android:layout_width="fill_parent"
+	   android:layout_height="fill_parent"
+	   android:orientation="horizontal"
+	   android:layout_marginTop="380px"
+	   android:background="#1e72bb"
+	   android:gravity="center">
 
         <Button
             android:id="@+id/startButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:background="@drawable/button_selector" />
 
         <TextView
             android:id="@+id/timeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/startButton"
-            android:layout_toRightOf="@+id/startButton"
             android:gravity="center"
             android:textColor="#ff9"
-            android:textSize="20sp"
-            android:width="150dp" />
+	        android:textSize="20dip"
+	        android:width="150px" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

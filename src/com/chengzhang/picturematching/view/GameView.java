@@ -106,7 +106,7 @@ public class GameView extends View {
 		/* get all linkPointpositions */
 		List<Point> points = linkInfo.getLinkPoints();
 
-		for (int i = 0; i < points.size(); i++) {
+		for (int i = 0; i < points.size() - 1; i++) {
 			Point currentPoint = points.get(i);
 			Point nextPoint = points.get(i + 1);
 

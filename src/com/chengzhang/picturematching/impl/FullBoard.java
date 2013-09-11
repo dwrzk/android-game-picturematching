@@ -20,7 +20,7 @@ public class FullBoard extends AbstractBoard {
 	protected List<Piece> createPieces(GameConf gameConf, Piece[][] pieces) {
 		List<Piece> nonNullPieces = new ArrayList<Piece>();
 		for (int rowIndex = 1; rowIndex < pieces.length - 1; rowIndex++) {
-			for (int colIndex = 1; colIndex < pieces[colIndex].length - 1; colIndex++) {
+			for (int colIndex = 1; colIndex < pieces[rowIndex].length - 1; colIndex++) {
 				Piece newPiece = new Piece(rowIndex, colIndex);
 				nonNullPieces.add(newPiece);
 			}
