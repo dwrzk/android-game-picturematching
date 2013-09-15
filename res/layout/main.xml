@@ -13,12 +13,12 @@
        android:layout_width="fill_parent"
 	   android:layout_height="fill_parent"
 	   android:orientation="horizontal"
-	   android:layout_marginTop="380px"
+	   android:layout_marginTop="380dp"
 	   android:background="#1e72bb"
 	   android:gravity="center">
 
         <Button
-            android:id="@+id/startButton"
+            android:id="@+id/pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_selector" />
@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ff9"
-	        android:textSize="20dip"
-	        android:width="150px" />
+	        android:textSize="20sp"
+	        android:width="150dp" />
 
     </LinearLayout>
 

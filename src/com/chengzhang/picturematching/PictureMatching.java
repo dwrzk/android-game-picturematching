@@ -30,7 +30,7 @@ public class PictureMatching extends Activity {
 	private GameConf _config;
 	private GameService _gameService;
 	private GameView _gameView;
-	private Button _startButton;
+	private Button _pauseButton;
 	private TextView _timeTextView;
 	private AlertDialog.Builder _lostDialog;
 	private AlertDialog.Builder _successDialog;
@@ -42,6 +42,7 @@ public class PictureMatching extends Activity {
 
 	private Piece _selected = null;
 	Handler _handler = new Handler() {
+		@SuppressWarnings("synthetic-access")
 		public void handleMessage(Message mag) {
 			switch (mag.what) {
 			case 0x123:
@@ -69,7 +70,7 @@ public class PictureMatching extends Activity {
 		_config = new GameConf(8, 9, 2, 10, 100000, this);
 		_gameView = (GameView) findViewById(R.id.gameView);
 		_timeTextView = (TextView) findViewById(R.id.timeText);
-		_startButton = (Button) findViewById(R.id.startButton);
+		_pauseButton = (Button) findViewById(R.id.pauseButton);
 		_vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
 		_gameService = new GameEngine(_config);
@@ -77,14 +78,23 @@ public class PictureMatching extends Activity {
 		_lostDialog = createDialog("Lost", "Game Over", R.drawable.lost); //$NON-NLS-1$ //$NON-NLS-2$
 		_successDialog = createDialog("Win", "You Win", R.drawable.success); //$NON-NLS-1$ //$NON-NLS-2$
 		addListners();
+		startGame(GameConf.DEFAULT_TIME);
 	}
 
 	private void addListners() {
-		_startButton.setOnClickListener(new View.OnClickListener() {
+		_pauseButton.setOnClickListener(new View.OnClickListener() {
 
+			@SuppressWarnings("synthetic-access")
 			@Override
 			public void onClick(View v) {
-				startGame(GameConf.DEFAULT_TIME);
+				if(_isPlaying) {
+					onPause();
+					_isPlaying = false;
+				} else {
+					_isPlaying = true;
+					onResume();
+				}
+				
 			}
 		});
 
